@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Avalon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top " style="background-color: #fffcdc;">
+
+        <a class="navbar-brand" href="#">
+            <img src="./images/avalon.svg" class="img-fluid mx-0" alt="" style="height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home </a>
+                </li>
+
+                <li class="nav-item dropdown mx-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categories
+                      </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Watches</a>
+                        <a class="dropdown-item" href="#">Shoes</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" href="#">T-shirts</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown mx-2 hidden profile">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span id='userName'>Hi</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#">My Offers</a>
+
+                    </div>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0 navBtn">
+                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+                <button class="btn btn-outline-success my-2 my-sm-0 mr-2 hidden" id='logout' type="button" data-toggle="modal" data-target="#alertModal">Logout</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 mr-2" id="signin" type="button" data-toggle="modal" data-target="#signInModal">SignIn</button>
+
+                <button class="btn btn-outline-success my-2 my-sm-0" id='signup' type="button" data-toggle="modal" data-target="#signUpModal">SignUp</button>
+            </form>
+            <!-- <li class="nav-item"> -->
+            <a class="nav-link cart hidden mx-0" href="cart.html"><img src="./images/cart.png" class="mx-0 my-0 py-0" alt="" style="height: 
+                    20px;"><span id="cartLogoNo">0</span></a>
+            <!-- </li> -->
+        </div>
+    </nav>
+
+
+
+    <div class="container-fluid no-gutters mx-0 my-3" style="background: #d9a7c7;
+    background: linear-gradient(to bottom, #fffcdc, #d9a7c7);">
+
+        <!-- alert Modal -->
+        <div class="modal fade" tabindex="-1" id="alertModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <p><span id="putNameHere"></span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SignUp Modal -->
+        <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Signup Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body my-0 pt-3">
+                        <div class="col-md-12 mx-auto" style="background-color: white;">
+                            <form id="signUpForm">
+                                <div class="form-group">
+                                    <label for="modalText">Username</label>
+                                    <input type="text" class="form-control" id="newUser" aria-describedby="emailHelp">
+                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="newPassword">
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="signUpCheck">
+                                    <label class="form-check-label" for="exampleCheck1">I agree to the <a href="#">Terms</a>
+
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary col-md-12">Create Account</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SignIn modal -->
+        <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h5 class="modal-title">SignIn</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body my-0 pt-3">
+                        <div class="col-md-12 mx-auto" style="background-color: white;">
+                            <form id="signInForm">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="signEmail" aria-describedby="emailHelp">
+                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="signPassword">
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input">
+                                    <label class="form-check-label" for="exampleCheck1">Remember me
+
+                            </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary col-md-12">Log In</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container d-flex mt-5 pt-5 pop">
+            <div class="container mt-5 pt-5 mx-auto occupy">
+                <h1><b>Give Yourself a</b></h1>
+                <h1><b>Unique Style!</b></h1><br>
+
+                <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis consequuntur temporibus dolorem minus vel, iusto quidem dignissimos cumque. Id, illo.
+                </small><br><br>
+                <button class="btn card " style="border-radius: 5%; background-color: tomato; width: 150px;"><span class="text-center">Explore Now</span></button>
+            </div>
+
+            <div class="container d-none d-lg-block">
+                <img src="./images/men.png " alt=" " class="img-fluid hide" style="height: 600px">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid no-gutters mx-0 mt-5 " style="background-color: rgb(255, 255, 255); ">
+        <div class="container mt-5 ">
+
+            <!-- above featured products( 3 pics ) -->
+            <div class="card-deck mt-5 pd-5 ">
+                <div class="card ">
+                    <img src="./images/category-1.jpg " class="card-img-top " alt="... ">
+
+                </div>
+                <div class="card ">
+                    <img src="./images/category-2.jpg " class="card-img-top " alt="... ">
+
+                </div>
+                <div class="card ">
+                    <img src="./images/category-3.jpg " class="card-img-top " alt="... ">
+
+                </div>
+            </div>
+            <!-- above featured products( 3 pics)  -->
+
+            <!-- Featured products -->
+            <br><br><br><br>
+            <h3 class="text-center my-5">
+                <span class='underline'>Featured Products</span>
+            </h3>
+            <br><br><br>
+            <div class="card-deck ">
+                <div class="card  prod" style="border: none; " id='p1'>
+                    <img src="./images/product-1.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Red printed t-shirt</p>
+                        <p class="my-1">⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$50.00</p>
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                            <button class="btn ml-0 mr-1 pbtn" for='p1'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p1'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card  prod" style=" border: none; " id='p2'>
+                    <img src="./images/product-2.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">HRX Sports Shoes</p>
+                        <p class="my-1">⭐⭐⭐</p>
+                        <p id="prodPrice">$99.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p2'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p2'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card  prod" style="border: none; " id='p3'>
+                    <img src="./images/product-3.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">HRX Gray Trackpants</p>
+                        <p class="four-stars my-1">⭐⭐⭐</p>
+                        <p id="prodPrice">$99.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p3'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p3'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card  prod" style="border: none; " id='p4'>
+                    <img src="./images/product-4.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Blue Printed T-Shirt</p>
+                        <p class="four-stars my-1">⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$99.99</p>
+
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p4'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p4'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- !Featured products -->
+
+
+            <!-- Latest products -->
+            <h3 class="text-center my-5">
+                <span class='underline'><br>Latest Products</span>
+            </h3>
+            <br> <br> <br>
+            <!-- row-1 of latest-->
+
+            <div class="card-deck mb-4 pb-5">
+                <div class="card prod" style="border: none;" id='p5'>
+                    <img src="./images/product-5.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Pumha Gray Sports Shoes</p>
+                        <p class="four-stars my-1">⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$74.99</p>
+
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p5'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p5'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card  prod" style="border: none; " id='p6'>
+                    <img src="./images/product-6.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+                        <p class="card-text my-0 pd-0" id="prodDesc">Black Printed T-Shirt</p>
+                        <p class="four-stars my-1">⭐⭐⭐</p>
+                        <p id="prodPrice">$24.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p6'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p6'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card  prod" style="border: none; " id='p7'>
+                    <img src="./images/product-7.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">HRX Set of 3 Socks</p>
+                        <p class="four-stars my-1">⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$9.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p7'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p7'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card  prod" style="border: none; " id='p8'>
+                    <img src="./images/product-8.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Fossill Watch-Black</p>
+                        <p class="four-stars my-1">⭐⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$49.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p8'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p8'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- !row-1 of latest-->
+
+            <!-- row-2 of latest-->
+            <div class="card-deck mb-4 pb-5">
+                <div class="card  prod" style="border: none; " id='p9'>
+                    <img src="./images/product-9.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Fossill Sportx-Black</p>
+                        <p class="four-stars my-1">⭐⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$69.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p9'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p9'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card  prod" style="border: none; " id='p10'>
+                    <img src="./images/product-10.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Sports Shoes-Black</p>
+                        <p class="four-stars my-1">⭐⭐⭐</p>
+                        <p id="prodPrice">$49.99</p>
+                        <div class="d-e.targetflex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p10'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p10'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card prod" style="border: none; " id='p11'>
+                    <img src="./images/product-11.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Sports Shoes-Gray</p>
+                        <p class="four-stars my-1">⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$49.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p11'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p11'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card prod" style="border: none; " id='p12'>
+                    <img src="./images/product-12.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body my-0">
+
+                        <p class="card-text my-0 pd-0" id="prodDesc">Black Trackpants</p>
+                        <p class="four-stars my-1">⭐⭐⭐⭐⭐</p>
+                        <p id="prodPrice">$17.99</p>
+                        <div class="d-flex">
+                            <button class="btn ml-0 mr-1 pbtn" for='p12'><span class="text-center">Add to cart</span></button>
+                            <button class="btn ml-0 mr-1 pbtn1" for='p12'><span class="text-center">WishList</span></button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <!-- watch -->
+    <div class="container-fluid d-flex mt-5 pt-5" style="background: #d9a7c7;
+    background: linear-gradient(to bottom, #fffcdc, #d9a7c7);" id='p13'>
+
+        <div class=" container d-none d-lg-block ">
+            <img src="./images/exclusive.png " alt=" " class="img-fluid " style="height: 470px;">
+        </div>
+
+        <div class="container mt-5 pt-5 mx-auto ">
+
+            <p>Exclusively available on Avalon store </p>
+            <h1><b>Smart Band 4</b></h1>
+
+
+            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis consequuntur temporibus dolorem minus vel, iusto quidem dignissimos cumque. Id, illo.
+            </small><br><br>
+            <!-- <button class="btn card " style="border-radius: 5%; background-color: tomato; width: 150px;"><span class="text-center">Explore Now</span></button> -->
+            <button class="btn ml-0 mr-1 pbtn1" for='p13'><span class="text-center">Add to cart</span></button>
+        </div>
+        <!-- <button class="btn ml-0 mr-1 pbtn1" for='p13'><span class="text-center">Add to cart</span></button> -->
+
+    </div>
+
+    <!-- !watch -->
+
+    <div class="container-fluid mt-5 ">
+        <div class="container ">
+            <div class="card-deck ">
+                <div class="card mt-5 " style="border: none; box-shadow: 0px 3px 15px rgba(0,0,0,0.2); ">
+                    <!-- <img src="./images/quotes.png " class="card-img-top " alt="... "> -->
+                    <div class="text-center ">
+                        <img class="rounded " src="https://img.icons8.com/officel/80/000000/quote-right.png " style="width: 80px; ">
+                    </div>
+                    <div class="card-body justify-content-center ">
+                        <!-- <h5 class="card-title ">Card title</h5> -->
+                        <p class="card-text "> This content is a little bit longer.</p>
+                        <div class="text-center ">
+                            <img src="./images/user-1.png " class="card-img-top " alt="... " style="height: 100px; width: 100px; border-radius: 50% 50%; ">
+                        </div>
+                        <br>
+                        <h5 class="text-center ">User 1</h5>
+                    </div>
+                </div>
+
+                <div class="card mt-5 " style="border: none;box-shadow: 0px 3px 15px rgba(0,0,0,0.2); ">
+                    <!-- <img src="./images/quotes.png " class="card-img-top " alt="... "> -->
+                    <div class="text-center ">
+                        <img class="rounded " src="https://img.icons8.com/officel/80/000000/quote-right.png " style="width: 80px; ">
+                    </div>
+                    <div class="card-body justify-content-center ">
+                        <!-- <h5 class="card-title ">Card title</h5> -->
+                        <p class="card-text "> This content is a little bit longer.</p>
+                        <div class="text-center ">
+                            <img src="./images/user-2.png " class="card-img-top " alt="... " style="height: 100px; width: 100px; border-radius: 50% 50%; ">
+                        </div>
+                        <br>
+                        <h5 class="text-center ">User 2</h5>
+                    </div>
+                </div>
+
+                <div class="card mt-5 " style="border: none; box-shadow: 0px 3px 15px rgba(0,0,0,0.2); ">
+                    <!-- <img src="./images/quotes.png " class="card-img-top " alt="... "> -->
+                    <div class="text-center ">
+                        <img class="rounded " src="https://img.icons8.com/officel/80/000000/quote-right.png " style="width: 80px; ">
+                    </div>
+                    <div class="card-body justify-content-center ">
+                        <!-- <h5 class="card-title ">Card title</h5> -->
+                        <p class="card-text "> This content is a little bit longer.</p>
+                        <div class="text-center ">
+                            <img src="./images/user-3.png " class="card-img-top " alt="... " style="height: 100px; width: 100px; border-radius: 50% 50%; ">
+                        </div>
+                        <br>
+                        <h5 class="text-center ">User 3</h5>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="card-deck ">
+                <div class="card mt-5 " style="border: none; box-shadow: 0px 3px 15px rgba(0,0,0,0.2); ">
+                    <!-- <img src="./images/quotes.png " class="card-img-top " alt="... "> -->
+                    <div class="text-center ">
+                        <img class="rounded " src="https://img.icons8.com/officel/80/000000/quote-right.png " style="width: 80px; ">
+                    </div>
+                    <div class="card-body justify-content-center ">
+                        <!-- <h5 class="card-title ">Card title</h5> -->
+                        <p class="card-text "> This content is a little bit longer.</p>
+                        <div class="text-center ">
+                            <img src="./images/user-1.png " class="card-img-top " alt="... " style="height: 100px; width: 100px; border-radius: 50% 50%; ">
+                        </div>
+                        <br>
+                        <h5 class="text-center ">User 1</h5>
+                    </div>
+                </div>
+
+                <div class="card mt-5 " style="border: none;box-shadow: 0px 3px 15px rgba(0,0,0,0.2); ">
+                    <!-- <img src="./images/quotes.png " class="card-img-top " alt="... "> -->
+                    <div class="text-center ">
+                        <img class="rounded " src="https://img.icons8.com/officel/80/000000/quote-right.png " style="width: 80px; ">
+                    </div>
+                    <div class="card-body justify-content-center ">
+                        <!-- <h5 class="card-title ">Card title</h5> -->
+                        <p class="card-text "> This content is a little bit longer.</p>
+                        <div class="text-center ">
+                            <img src="./images/user-2.png " class="card-img-top " alt="... " style="height: 100px; width: 100px; border-radius: 50% 50%; ">
+                        </div>
+                        <br>
+                        <h5 class="text-center ">User 2</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 pt-5 ">
+
+            <!-- <img src="./images/logo-coca-cola.png " alt=" " class="img-fluid " style="height: 100px; "> -->
+            <div class="row d-flex justify-content-around mt-5 ">
+                <img class="img-responsive " src="./images/logo-coca-cola.png " alt=" ">
+                <img class="img-responsive " src="./images/logo-paypal.png " alt=" ">
+                <img class="img-responsive " src="./images/logo-philips.png " alt=" ">
+                <img class="img-responsive " src="./images/logo-godrej.png " alt=" ">
+
+            </div>
+            <!-- <img src="./images/logo-paypal.png " alt=" " class="img-fluid " style="height: 100px; ">
+            <img src="./images/logo-philips.png " alt=" " class="img-fluid " style="height: 100px; ">
+            <img src="./images/logo-godrej.png " alt=" " class="img-fluid " style="height: 100px; "> -->
+        </div>
+    </div>
+
+    <!-- testimonial -->
+
+    <!-- !testimonial -->
+
+    <!-- company logo -->
+    <!-- !company logo -->
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4 mt-5 pt-5 bg-dark ">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left mt-2 ">
+
+            <!-- Grid row -->
+            <div class="row ">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3 justify-content-center ">
+
+                    <!-- Content -->
+                    <h3 class="text-center text-white ">Download Our App</h3>
+                    <h6 class="text-center text-white ">Download from Playstore or Appstore</small>
+                        <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat, temporibus!</p> -->
+                        <div class="d-flex justify-content-center mt-3 ">
+                            <img class="img-responsive " src="./images/app-store.png " alt=" " style="width:150px ">
+                            <img class="img-responsive " src="./images/play-store.png " alt=" " style="width:150px ">
+
+                        </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3 ">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3 ">
+
+                    <!-- Links -->
+                    <!-- <h5 class="text-uppercase ">Links</h5>
+
+                    <ul class="list-unstyled ">
+                        <li>
+                            <a href="#! ">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#! ">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#! ">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#! ">Link 4</a>
+                        </li>
+                    </ul> -->
+                    <h4 class="text-white ">Useful Links</h4>
+                    <a href="# ">Coupons</a><br>
+                    <a href="# ">Blog</a><br>
+                    <a href="# ">Carrers</a><br>
+                    <a href="# ">Policy</a><br>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3 ">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase text-white ">Follow Us</h5>
+
+                    <ul class="list-unstyled ">
+                        <li>
+                            <a href="#! ">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#! ">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="#! ">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="#! ">Youtube</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center pt-2 pb-1 mt-3 d-flex justify-content-center ">
+            <p class="text-white ">© 2020 Copyright:</p>
+            <a href="https://mdbootstrap.com/ "> Avalon Labs</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAuc_L3o-02UkzSG3z5QFdgnNrtPHChXCg",
+            authDomain: "e-commerce-f8a52.firebaseapp.com",
+            databaseURL: "https://e-commerce-f8a52.firebaseio.com",
+            projectId: "e-commerce-f8a52",
+            storageBucket: "e-commerce-f8a52.appspot.com",
+            messagingSenderId: "1074136113593",
+            appId: "1:1074136113593:web:e4c8251be9a2faf8e95668",
+            measurementId: "G-57MFPM0D6D"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // firebase.analytics();
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+
+        //update settings
+    </script>
+    <script>
+        const productDetails = {}
+
+
+        let prodCards = document.querySelectorAll('.prod');
+        console.log(prodCards);
+
+        let c = 1;
+
+        prodCards.forEach(prodCard => {
+
+            let pid = prodCard.getAttribute('id');
+            // let prodDesc = val.querySelector('#prodDesc').innerHTML;
+            // let prodPrice = val.querySelector('#prodPrice').innerHTML;
+            // let imgSrc = val.querySelector('img').getAttribute('src');
+
+            let prodDesc = document.getElementById(pid).querySelector('#prodDesc').innerText;
+            let prodPrice = document.getElementById(pid).querySelector('#prodPrice').innerText;
+            let imgSrc = document.getElementById(pid).querySelector('img').getAttribute('src');
+            // let p = 'p' + c;
+            // p = {};
+            // productDetails[p]['prodDesc'] = d;
+            // productDetails[p]['prodPrice'] = p;
+            // productDetails[p]['imgSrc'] = i;
+
+            // c += 1
+            // console.log(c - 1, productDetails);
+            let xxx = {};
+            xxx['prodDesc'] = prodDesc;
+            xxx['prodPrice'] = prodPrice;
+            xxx['imgSrc'] = imgSrc;
+            productDetails[pid] = xxx;
+
+            console.log(xxx);
+
+        });
+        console.log('oooo', productDetails);
+        // console.log(productDetails);
+
+        localStorage.setItem('productDetails', JSON.stringify(productDetails));
+    </script>
+
+    <script type="module" src="./scripts/globalVar.js"></script>
+    <script type="module" src="./scripts/auth.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</body>
+
+</html>
